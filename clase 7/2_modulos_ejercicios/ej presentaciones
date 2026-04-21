@@ -1,0 +1,10 @@
+archivo = open("5_test.txt", "w")
+archivo.write("Python\n")
+archivo.write("Django\n")
+archivo.close()
+
+archivo = open("5_test.txt", "r")
+contenido = archivo.read()
+archivo.close()
+
+print(contenido)

@@ -1,0 +1,12 @@
+class Persona:
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
+
+lu = Persona(nombre= Lucia, apellido= Jirreta)
+Facu = Persona(nombre=Facundo, apellido= Bertua)
+        
+print(lu.nombre, lu.apellido, Facu.nombre, Facu.apellido)
+    
+
+    

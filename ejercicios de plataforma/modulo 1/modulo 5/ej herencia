@@ -1,0 +1,44 @@
+class Cuenta:
+    def __init__(self):
+        self.saldo = 0.0
+
+    def depositar(self, monto):
+        self.saldo += monto
+
+    def retirar(self, monto):
+        if self.saldo >= monto:
+            self.saldo -= monto
+        else:
+            return "Fondos insuficientes"
+
+
+class CuentaAhorro(Cuenta):
+    def retirar(self, monto):
+        return super().retirar(monto + 2)
+
+
+def main():
+    cuenta = CuentaAhorro()
+    n = int(input())
+
+    for _ in range(n):
+        operacion = input().split()
+        accion = operacion[0]
+        monto = float(operacion[1])
+
+        if accion == 'depositar':
+            cuenta.depositar(monto)
+        elif accion == 'retirar':
+            resultado = cuenta.retirar(monto)
+
+            if resultado is None:
+                print(cuenta.saldo)
+            else:
+                print(resultado)
+
+
+if __name__ == '__main__':
+    main()
+      
+    
+

@@ -1,0 +1,31 @@
+def calcular_media(numeros):
+    return (sum(numeros)) / (len(numeros))
+
+def calcular_mediana(numeros):
+    numeros_ordenados = sorted(numeros)
+    indice = len(numeros_ordenados) // 2
+    
+    if len(numeros_ordenados) % 2 == 0:
+        return ((numeros_ordenados[indice] + numeros_ordenados[indice - 1])) / 2
+    else:
+        return numeros_ordenados[indice]
+    
+    print(calcular_mediana(numeros))
+ 
+
+
+    
+ 
+   
+
+      
+
+   
+
+
+
+
+
+
+
+
