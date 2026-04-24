@@ -1,10 +1,24 @@
-archivo = open("5_test.txt", "w")
-archivo.write("Python\n")
-archivo.write("Django\n")
-archivo.close()
+def guardar(nombre_archivo):
+    try:
+        with open(nombre_archivo, "w") as archivo:
+            archivo.write("Python\n")
+            archivo.write("Django\n")
+    except Exception as error:
+        print("Error:", repr(error))
 
-archivo = open("5_test.txt", "r")
-contenido = archivo.read()
-archivo.close()
 
-print(contenido)
+def leer(nombre_archivo):
+    try:
+        with open(nombre_archivo, "r") as archivo:
+            contenido = archivo.read()
+    except FileNotFoundError:
+        print("El archivo no existe")
+    except Exception as error:
+        print("Error:", repr(error))
+    else:
+        print(contenido)
+
+
+
+
+

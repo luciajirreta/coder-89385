@@ -1,12 +1,13 @@
 class Persona:
-    def __init__(self, nombre, apellido):
+    def __init__(self, nombre, apellido) -> None:
         self.nombre = nombre
         self.apellido = apellido
 
-lu = Persona(nombre= Lucia, apellido= Jirreta)
-Facu = Persona(nombre=Facundo, apellido= Bertua)
+lu = Persona("Lucia", "Jirreta")
+Facu = Persona("Facundo", "Bertua")
         
-print(lu.nombre, lu.apellido, Facu.nombre, Facu.apellido)
+print(f"{lu.nombre} {lu.apellido}")
+print(f"{Facu.nombre} {Facu.apellido}")
     
 
     

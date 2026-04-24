@@ -14,7 +14,7 @@ def procesar_numeros():
                 continue
             suma += num
         if suma > 100:
-            raise SumaExcesivaError
+            raise SumaExcesivaError()
     except SumaExcesivaError:
         print("Error: Suma excesiva.")
     else:

@@ -1,0 +1,11 @@
+class Contraseña:
+    def __init__(self, contraseña, largo) -> None:
+        self.contraseña = contraseña
+        self.largo = largo
+    
+    def validar_contraseña(self):
+        if len(self.contraseña) < 4 or len(self.contraseña) > 16:
+            raise ValueError("La contraseña debe tener entre 4 y 16 caracteres")
+        else:
+            print("Contraseña valida")
+

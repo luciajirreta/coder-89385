@@ -1,44 +1,70 @@
-class Cuenta:
-    def __init__(self):
-        self.saldo = 0.0
-
-    def depositar(self, monto):
-        self.saldo += monto
-
-    def retirar(self, monto):
-        if self.saldo >= monto:
-            self.saldo -= monto
-        else:
-            return "Fondos insuficientes"
-
-
-class CuentaAhorro(Cuenta):
-    def retirar(self, monto):
-        return super().retirar(monto + 2)
-
-
+class Vehiculo:
+    def __init__(self, marca, modelo):
+        self._marca = marca
+        self._modelo = modelo
+    @property
+    def marca(self):
+        return self._marca
+    @property
+    def modelo(self):
+        return self._modelo
+    def descripcion(self):
+        raise NotImplementedError("Este método debe ser implementado en subclases")
+class CapacidadCargaMixin:
+    def __init__(self, capacidad_carga, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._capacidad_carga = capacidad_carga
+    @property
+    def capacidad_carga(self):
+        return self._capacidad_carga
+class CapacidadPasajerosMixin:
+    def __init__(self, capacidad_pasajeros, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._capacidad_pasajeros = capacidad_pasajeros
+    @property
+    def capacidad_pasajeros(self):
+        return self._capacidad_pasajeros
+# Completa las clases VehiculoCarga, VehiculoPasajeros y VehiculoMixto
+class VehiculoCarga(CapacidadCargaMixin, Vehiculo):
+    def __init__(self, marca, modelo, capacidad_carga):
+        # Completar
+        pass
+    def descripcion(self):
+        # Completar
+        pass
+class VehiculoPasajeros(CapacidadPasajerosMixin, Vehiculo):
+    def __init__(self, marca, modelo, capacidad_pasajeros):
+        # Completar
+        pass
+    def descripcion(self):
+        # Completar
+        pass
+class VehiculoMixto(CapacidadCargaMixin, CapacidadPasajerosMixin, Vehiculo):
+    def __init__(self, marca, modelo, capacidad_carga, capacidad_pasajeros):
+        # Completar
+        pass
+    def descripcion(self):
+        # Completar
+        pass
 def main():
-    cuenta = CuentaAhorro()
     n = int(input())
-
     for _ in range(n):
-        operacion = input().split()
-        accion = operacion[0]
-        monto = float(operacion[1])
-
-        if accion == 'depositar':
-            cuenta.depositar(monto)
-        elif accion == 'retirar':
-            resultado = cuenta.retirar(monto)
-
-            if resultado is None:
-                print(cuenta.saldo)
-            else:
-                print(resultado)
-
-
+        datos = input().split()
+        tipo = datos[0]
+        marca = datos[1]
+        modelo = datos[2]
+        capacidad_carga = int(datos[3])
+        capacidad_pasajeros = int(datos[4])
+        if tipo == 'carga':
+            vehiculo = VehiculoCarga(marca, modelo, capacidad_carga)
+        elif tipo == 'pasajeros':
+            vehiculo = VehiculoPasajeros(marca, modelo, capacidad_pasajeros)
+        elif tipo == 'mixto':
+            vehiculo = VehiculoMixto(marca, modelo, capacidad_carga, capacidad_pasajeros)
+        else:
+            continue
+        print(vehiculo.descripcion())
 if __name__ == '__main__':
     main()
-      
     
 

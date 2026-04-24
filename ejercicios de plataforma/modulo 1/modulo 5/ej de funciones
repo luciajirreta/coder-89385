@@ -1,16 +1,41 @@
+def leer_numeros():
+    """Lee la cantidad de números y la lista desde la entrada estándar."""
+    n = int(input())
+    numeros = list(map(float, input().split()))
+    return numeros
+
+
 def calcular_media(numeros):
-    return (sum(numeros)) / (len(numeros))
+    """Calcula la media de una lista de números."""
+    return sum(numeros) / len(numeros)
+
 
 def calcular_mediana(numeros):
+    """Calcula la mediana de una lista de números."""
     numeros_ordenados = sorted(numeros)
     indice = len(numeros_ordenados) // 2
-    
+
     if len(numeros_ordenados) % 2 == 0:
-        return ((numeros_ordenados[indice] + numeros_ordenados[indice - 1])) / 2
+        return (numeros_ordenados[indice] + numeros_ordenados[indice - 1]) / 2
     else:
         return numeros_ordenados[indice]
-    
-    print(calcular_mediana(numeros))
+
+
+def imprimir_reporte(media, mediana):
+    """Imprime la media y mediana con formato."""
+    print(f"Media: {media:.2f}")
+    print(f"Mediana: {mediana:.2f}")
+
+
+def main():
+    numeros = leer_numeros()
+    media = calcular_media(numeros)
+    mediana = calcular_mediana(numeros)
+    imprimir_reporte(media, mediana)
+
+
+if __name__ == "__main__":
+    main()
  
 
 
